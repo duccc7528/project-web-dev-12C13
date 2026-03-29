@@ -1,0 +1,943 @@
+:root {
+    --black: #222222;
+    --dark-gray: #4a4a4a;
+    --gray: #888888;
+    --light-gray: #f2f3f5;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--black);
+    line-height: 1.6;
+}
+
+/* Giới hạn chiều rộng nội dung giống các trang LMS (để nội dung không bị bè ra quá to) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Header / Navbar phong cách sáng màu --- */
+header {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--black);
+}
+
+/* --- Hero/Banner Section (Thu gọn lại thành dạng Banner chữ nhật) --- */
+.hero {
+    padding: 20px 0;
+}
+
+.hero-content {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80') center/cover;
+    height: 350px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    padding: 10px 24px;
+    background-color: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px; /* Nút bo góc nhẹ thay vì bo tròn hẳn */
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- Layout chung cho các Section --- */
+section {
+    padding: 40px 0;
+}
+
+/* Tiêu đề mục phong cách vnEdu (Có vạch kẻ dọc bên trái) */
+.section-title {
+    font-size: 1.5rem;
+    color: var(--black);
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--black);
+    display: flex;
+    align-items: center;
+}
+
+/* --- About Section --- */
+.about .about-box {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--dark-gray);
+}
+
+/* --- Features / Courses Cards (Giống danh sách khóa học) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Cắt phần ảnh bị thừa ở góc bo */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+/* Thêm giả lập khung ảnh của khóa học */
+.card-image {
+    height: 160px;
+    background-color: #ddd;
+    background-image: url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--black);
+    line-height: 1.4;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+/* Phân cách chân thẻ giống khóa học vnEdu */
+.card-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer .tag {
+    background-color: var(--light-gray);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+    color: var(--gray);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* --- Menu Hamburger & Responsive (Di động) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin: 5px 0;
+    display: block;
+    transition: all 0.3s ease;
+}
+/* --- School Intro Section (Giới thiệu Trường) --- */
+.school-intro {
+    margin-top: 100px; /* Bù khoảng trống cho thanh menu cố định ở trên cùng */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.school-intro .intro-content {
+    flex: 1;
+}
+
+.school-intro .intro-content p {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.school-intro .intro-image {
+    flex: 1;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Thiết kế cho màn hình máy tính: Nằm ngang */
+@media (min-width: 768px) {
+    .school-intro {
+        flex-direction: row;
+        align-items: center;
+    }
+    .school-intro .intro-content {
+        padding-right: 30px;
+    }
+    .school-intro .intro-image {
+        height: 350px;
+    }
+}
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        position: fixed;
+        right: -100%;
+        top: 60px; /* Bắt đầu từ dưới header */
+        height: calc(100vh - 60px);
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        transition: right 0.3s ease;
+        border-top: 1px solid var(--border-color);
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+
+    .hero-content {
+        height: 300px;
+    }
+    
+}
+/* --- Hiệu ứng cuộn trang (Scroll Animations) --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+:root {
+    --black: #222222;
+    --dark-gray: #4a4a4a;
+    --gray: #888888;
+    --light-gray: #f2f3f5;
+    --white: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden; /* Ngăn cuộn ngang */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Header / Navbar phong cách sáng màu --- */
+header {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Cập nhật Header Logo --- */
+/* Nhóm chứa Logo và Văn bản */
+.logo-container {
+    flex: 1; /* Cho phép nó mở rộng nếu cần */
+    display: flex;
+    justify-content: flex-start; /* Logo group ở bên trái */
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center; /* Sắp xếp giữa theo chiều dọc */
+    text-decoration: none; /* Xóa gạch chân liên kết */
+    color: var(--black); /* Màu văn bản mặc định */
+    transition: opacity 0.2s; /* Hiệu ứng hover nhẹ */
+}
+
+.logo-wrapper:hover {
+    opacity: 0.8;
+}
+
+.logo-img {
+    height: 40px; /* Chiều cao logo, điều chỉnh theo ý muốn */
+    width: auto;
+    margin-right: 15px; /* Khoảng cách giữa logo và chữ */
+    display: block; /* Đảm bảo hình ảnh không bị dính vào chữ */
+    object-fit: contain; /* Đảm bảo ảnh không bị méo */
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: 1px; /* Thêm letter-spacing nhẹ */
+    line-height: 1; /* Đảm bảo văn bản nằm giữa logo */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--black);
+}
+
+/* --- School Intro Section (Giới thiệu Trường) --- */
+.school-intro {
+    margin-top: 100px; /* Bù khoảng trống cho thanh menu cố định */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.school-intro .intro-content {
+    flex: 1;
+}
+
+.school-intro .intro-content p {
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.school-intro .intro-image {
+    flex: 1;
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Thiết kế cho màn hình máy tính: Nằm ngang */
+@media (min-width: 768px) {
+    .school-intro {
+        flex-direction: row;
+        align-items: center;
+    }
+    .school-intro .intro-content {
+        padding-right: 30px;
+    }
+    .school-intro .intro-image {
+        height: 350px;
+    }
+}
+
+/* --- Hero Section --- */
+.hero {
+    padding: 20px 0; /* Đã xóa margin-top: 80px */
+}
+
+.hero-content {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80') center/cover;
+    height: 350px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    padding: 10px 24px;
+    background-color: var(--white);
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- Section Title & Layout --- */
+section {
+    padding: 40px 0;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--black);
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 4px solid var(--black);
+    display: flex;
+    align-items: center;
+}
+
+/* --- About Section --- */
+.about .about-box {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    color: var(--dark-gray);
+}
+
+/* --- Courses / Features Section --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.card-image {
+    height: 160px;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--black);
+    line-height: 1.4;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer .tag {
+    background-color: var(--light-gray);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+    color: var(--gray);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+/* --- Hiệu ứng cuộn trang (Scroll Animations) --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Hamburger Menu & Mobile Responsive --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: var(--black);
+    margin: 5px 0;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        position: fixed;
+        right: -100%;
+        top: 70px; /* Bắt đầu từ dưới header */
+        height: calc(100vh - 70px);
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        transition: right 0.3s ease;
+        border-top: 1px solid var(--border-color);
+        box-shadow: -5px 0 10px rgba(0,0,0,0.05);
+    }
+
+    nav ul.active {
+        right: 0;
+    }
+
+    nav ul li {
+        margin: 1rem 0;
+    }
+
+    .hero-content {
+        height: 300px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+}
+/* =========================================
+   GIAO DIỆN TRANG CHI TIẾT KHÓA HỌC (LMS)
+   ========================================= */
+.lms-page {
+    background-color: var(--white);
+}
+
+.course-detail-container {
+    margin-top: 120px;
+    margin-bottom: 50px;
+}
+
+/* Khung tiêu đề môn học */
+.subject-header {
+    background-color: #fcf9f2; /* Màu nền vàng nhạt/kem */
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.subject-icon {
+    font-size: 1.5rem;
+    background: #eedcc6;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.subject-info h2 {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: 600;
+}
+
+.teacher-name {
+    font-weight: 400;
+    color: var(--gray);
+    font-size: 1rem;
+    margin-left: 5px;
+}
+
+/* Tiêu đề Accordion (Khối/Lớp) */
+.accordion-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #004b87; /* Màu xanh biển đậm */
+}
+
+.accordion-header .triangle-icon {
+    font-size: 0.8rem;
+}
+
+.accordion-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Danh sách bài học */
+.lesson-list {
+    border-top: 1px solid var(--border-color);
+}
+
+.lesson-item {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 1.5fr 2fr 1fr; /* Chia cột giống dạng bảng */
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    gap: 15px;
+}
+
+/* Cột Tiêu đề bài học */
+.lesson-col.title-col {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.check-icon { background-color: #28a745; }
+.doc-icon { background-color: #007bff; border-radius: 4px; }
+
+.lesson-type {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 3px;
+}
+
+.lesson-name {
+    font-size: 1rem;
+    color: var(--black);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Các cột thông tin (GV, Điểm, Hạn) */
+.lesson-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-col .label {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 3px;
+}
+
+.lesson-col .value {
+    font-size: 0.95rem;
+    color: var(--black);
+}
+
+/* Màu sắc trạng thái điểm số */
+.score-red { color: #dc3545 !important; font-weight: 600; }
+.score-green { color: #28a745 !important; font-weight: 600; }
+.status-orange { color: #fd7e14 !important; font-weight: 600; }
+.text-blue { color: #0056b3 !important; }
+.bold { font-weight: 600; }
+
+.status-green {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #28a745 !important;
+    font-weight: 600;
+}
+
+.progress-bar {
+    width: 30px;
+    height: 6px;
+    background-color: #28a745;
+    border-radius: 3px;
+}
+
+/* Ô hiển thị Hạn hoàn thành */
+.deadline-box {
+    background-color: #f1f3f5;
+    padding: 8px 15px;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Nút bấm (Buttons) */
+.action-col {
+    align-items: flex-end; /* Nút canh phải */
+}
+
+.btn-action {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+
+.btn-action:hover { opacity: 0.8; }
+
+.btn-gray { background-color: #adb5bd; color: white; }
+.btn-blue { background-color: #007bff; color: white; }
+.btn-dark-blue { background-color: #0056b3; color: white; }
+
+/* Responsive trên điện thoại */
+@media (max-width: 900px) {
+    .lesson-item {
+        grid-template-columns: 1fr; /* Chuyển thành 1 cột trên điện thoại */
+        gap: 10px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid var(--border-color);
+    }
+    .action-col {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    .deadline-box {
+        align-items: flex-start;
+        background-color: transparent;
+        padding: 0;
+    }
+}
+/* --- Nút Quay lại (Back Button) --- */
+.back-button-container {
+    margin-bottom: 25px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hiệu ứng trượt mũi tên sang trái khi hover */
+.btn-back:hover {
+    color: var(--black);
+    transform: translateX(-5px); 
+}
+
+.icon-back {
+    font-size: 1.2rem;
+    line-height: 1;
+}
+/* --- Footer --- */
+footer {
+    background-color: var(--white);
+    border-top: 1px solid var(--border-color);
+    color: var(--gray);
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+/* --- Ép menu văng sang lề phải --- */
+header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+header nav {
+    margin-left: auto !important; 
+}
+
+header nav ul {
+    justify-content: flex-end !important;
+}
